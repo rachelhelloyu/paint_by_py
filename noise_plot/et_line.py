@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # pandas read xlsx
-source = 'happy_stand'
+source = 'angel'
 file_path = r'./excel/Data_temp.xlsx'
 df = pd.read_excel(file_path, sheet_name='高斯噪声')  
 
@@ -37,6 +37,8 @@ fig, ax = plt.subplots()
 
 # Cluster:画第1条折线，参数看名字就懂，还可以自定义数据点样式等等。
 line_cluster, = plt.plot(x, cluster_et, color='#E6A4B4', label='cluster', linewidth=3.0,marker="o")
+#standard icp
+line_standard, = plt.plot(x, icp_et, color='#D4E2D4', label='standard', linewidth=3.0,marker="o")
 # p2plane icp
 line_p2plane, = plt.plot(x, p2plane_et, color='#96B6C5', label='p2plane', linewidth=3.0,marker="o")
 #robust icp
@@ -46,7 +48,7 @@ line_aa, = plt.plot(x, aa_et, color='#FFCF96', label='aa', linewidth=3.0,marker=
 #trimmed icp
 line_tr, = plt.plot(x, trimmed_et, color='#7469B6', label='trimmed', linewidth=3.0,marker="o")
 
-lines = [line_cluster,line_p2plane,line_robust,line_aa,line_tr]
+lines = [line_cluster,line_standard,line_p2plane,line_robust,line_aa,line_tr]
 
 annot = ax.annotate("", xy=(0,0), xytext=(-20,20), textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
@@ -96,7 +98,7 @@ plt.tight_layout()
 plt.grid()
 
 # 保存图片
-fig_path = './pic_noise/' + source +'/' + source + '_ET_noise.png'
+fig_path = './pic/' + source +'/' + source + '_ET_noise.png'
 plt.savefig(fig_path, bbox_inches='tight')
 
 # 显示图片
