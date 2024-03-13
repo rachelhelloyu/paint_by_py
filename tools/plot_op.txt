@@ -1,0 +1,3 @@
+# 给折线数据点加上数值，前两个参数是坐标，第三个是数值，ha和va分别是水平和垂直位置（数据点相对数值）。
+for a, b in zip(x, y):
+    plt.text(a, b, '%lf'%b, ha='center', va= 'bottom', fontsize=12)

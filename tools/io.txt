@@ -1,0 +1,12 @@
+# 读取 Excel 文件中的所有 sheet
+df = pd.read_excel('file.xlsx', sheet_name=None)
+
+# 读取 Excel 文件中的 sheet1 和 sheet2
+df = pd.read_excel('file.xlsx', sheet_name='sheet1') # 注意：读取一个sheet的时候一定不可以将sheet_name设置为[‘Name']形式，要把[]去掉
+df = pd.read_excel('file.xlsx', sheet_name=['sheet1', 'sheet2'])
+
+# 打印读取的每个 sheet 的名称和数据
+for sheet_name, sheet_data in df.items():
+    print(f'Sheet name: {sheet_name}')
+    print(sheet_data)
+
